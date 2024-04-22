@@ -13,27 +13,28 @@
     </div>
     <div>
         <dialog>
-            <form action="">
+            <form autocomplete="off">
+                <h3>Add a book</h3>
                 <div>
                     <label for="title">Title</label><br>
-                    <input type="text" name="title" id="title">
+                    <input type="text" name="title" id="title" >
                 </div>
                 <div>
                     <label for="author">Author</label><br>
-                    <input type="text" name="author" id="author">
+                    <input type="text" name="author" id="author" >
                 </div>
                 <div>
                     <label for="pages">Pages</label><br>
-                    <input type="text" name="pages" id="pages">
+                    <input type="number" name="pages" id="pages" >
                 </div>
                 
             <div>
-                <button value="cancel" formmethod="dialog">Cancel</button>
-                <button class="add">Add</button>
+                <button value="cancel" formmethod="dialog" class="cancel">Cancel</button>
+                <button type="submit" value='submit' formmethod="dialog" class="add">Add</button>
             </div>
             </form>
         </dialog>
-        <button class="addBook">Add book</button>
+        <button class="addBook">+</button>
         <div class="content">
         </div>
     </div>
