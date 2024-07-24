@@ -104,27 +104,67 @@ function displayBooks(){
 const addBook = document.querySelector(".addBook");
 const dialog = document.querySelector("dialog");
 const submitBtn = document.querySelector(".add");
+const cancelBtn = document.querySelector('.cancel')
 const form = document.querySelector("form");
 const content = document.querySelector(".content");
+const title = document.querySelector("#title");
+const authorId = document.querySelector('#author');
+const page = document.querySelector('#pages');
+const titleError = document.querySelector('#titleErr')
+const authorError = document.querySelector('#authorErr');
+const pagesError = document.querySelector('#pagesErr');
 
 addBook.addEventListener("click", () => {
     dialog.showModal();
 })
 
-submitBtn.addEventListener("click", () => {
-    event.preventDefault();
-    let title = form.title.value;
-    let author = form.author.value;
-    let pages = form.pages.value;
-    addBookToLibrary(title, author, pages)
-    console.table(myLibrary)
+submitBtn.addEventListener("click", (e) => {
+    console.log(form.checkValidity());
+    if(!form.checkValidity()){
+        console.log('WTF')
+        showError();
+        e.preventDefault();
+    }
+    else{
+        addBookToLibrary(form.title.value, form.author.value, form.pages.value)
+        console.table(myLibrary)
+        dialog.close();
+        form.reset();
+        displayBooks();
+        title.classList.remove('invalid');
+        authorId.classList.remove('invalid');
+        page.classList.remove('invalid');
+        titleError.textContent = "";
+        authorError.textContent = "";
+        pagesError.textContent = "";
+    }
+})
+
+cancelBtn.addEventListener('click', ()=> {
     dialog.close();
     form.reset();
-    displayBooks();
 })
 
 function removeAllChildNodes(parent) {
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
+    }
+}
+
+function showError(){
+    console.log('hehehe')
+    if(title.validity.valueMissing){
+        console.log('wtf')
+        title.classList.add('invalid')
+        titleError.textContent = 'You need to enter a title';
+    }
+    if(authorId.validity.valueMissing){
+        authorId.classList.add('invalid')
+        authorError.textContent = 'You need to enter an author'
+    }
+    if(page.validity.valueMissing){
+        console.log('hahaha')
+        page.classList.add('invalid')
+        pagesError.textContent = 'You need to enter a page'
     }
 }

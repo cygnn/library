@@ -15,17 +15,20 @@
         <dialog>
             <form autocomplete="off">
                 <h3>Add a book</h3>
-                <div>
-                    <label for="title">Title</label><br>
-                    <input type="text" name="title" id="title" >
+                <div class="form-item">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" id="title" required>
+                    <span class="error" aria-live="polite" id="titleErr"></span>
                 </div>
-                <div>
-                    <label for="author">Author</label><br>
-                    <input type="text" name="author" id="author" >
+                <div class="form-item">
+                    <label for="author">Author</label>
+                    <input type="text" name="author" id="author" required>
+                    <span class="error" aria-live="polite" id="authorErr"></span>
                 </div>
-                <div>
-                    <label for="pages">Pages</label><br>
-                    <input type="number" name="pages" id="pages" >
+                <div class="form-item">
+                    <label for="pages">Pages</label>
+                    <input type="number" name="pages" id="pages" required>
+                    <span class="error" aria-live="polite" id="pagesErr"></span>
                 </div>
                 
             <div>
